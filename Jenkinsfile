@@ -31,7 +31,7 @@ pipeline{
     stage('ACCEPTANCE'){
       steps{
         script{
-          if (env.BRANCH_NAME == 'release/v3' ) {
+          if (env.BRANCH_NAME == 'release/v4' ) {
             input 'Push to main ?'
           }
         }
@@ -40,7 +40,7 @@ pipeline{
     stage('MERGE'){
       steps{
         script{
-          if (env.BRANCH_NAME == 'release/v3') {
+          if (env.BRANCH_NAME == 'release/v4') {
             echo 'Merge to main'
           }
         }
