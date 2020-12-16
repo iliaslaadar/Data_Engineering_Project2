@@ -6,3 +6,4 @@ gensim
 nltk
 numpy
 pyemd
+prometheus_client
