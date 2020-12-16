@@ -1,0 +1,28 @@
+groups:
+  - name: rules
+    rules:
+    
+    # InstanceDown
+    - alert: InstanceDown
+      expr: up == 0
+      for: 2s
+      
+    
+    # Running out of memory  
+    - alert: RoutOfMemory
+      expr: (((node_memory_SwapTotal - node_memory_SwapFree) / node_memory_SwapTotal) * 100) > 75
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: Running out of memory
+      
+    
+    # High CPU usage  
+    - alert: HighCPUusage
+      expr: (((node_memory_MemTotal - node_memory_MemFree - node_memory_Cached) / (node_memory_MemTotal) * 100)) > 75
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: High memory usage
