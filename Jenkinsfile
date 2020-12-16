@@ -24,7 +24,6 @@ pipeline{
         script{
           if (env.BRANCH_NAME == 'develop') {
             echo 'Push to release'
-						bat 'git merge feature_app'
           }
         }  
       }
