@@ -5,16 +5,16 @@ pipeline{
       steps{
         script{
           sh 'python3 app.py &'
-	  			sh 'sleep 10'
+	  sh 'sleep 10'
         }
       }  
     }
     stage('TEST'){
       steps{
         script{
-          if (env.BRANCH_NAME == 'feature_app') {
+          if (env.BRANCH_NAME == 'feature_jenkins') {
             sh 'python3 Integration_test.py'
-						sh 'python3 Unit_test.py'
+	    sh 'python3 Unit_test.py'
           }
         }
       }
@@ -31,7 +31,7 @@ pipeline{
     stage('ACCEPTANCE'){
       steps{
         script{
-          if (env.BRANCH_NAME == 'release/v2' ) {
+          if (env.BRANCH_NAME == 'release/v3' ) {
             input 'Push to main ?'
           }
         }
@@ -40,7 +40,7 @@ pipeline{
     stage('MERGE'){
       steps{
         script{
-          if (env.BRANCH_NAME == 'release/v2') {
+          if (env.BRANCH_NAME == 'release/v3') {
             echo 'Merge to main'
           }
         }
